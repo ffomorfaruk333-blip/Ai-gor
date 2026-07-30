@@ -68,3 +68,21 @@ nav a {
 
 footer {
   background: #000;
+.tournament,
+.news,
+.contact{
+  padding:50px 20px;
+  text-align:center;
+}
+
+.tournament h2,
+.news h2,
+.contact h2{
+  color:#00d9ff;
+  margin-bottom:20px;
+}
+
+.contact p{
+  margin:10px 0;
+  font-size:18px;
+}
