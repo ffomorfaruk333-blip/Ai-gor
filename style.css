@@ -1,73 +1,24 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
 
-body{
-    font-family:Arial,sans-serif;
-    background:#111;
-    color:#fff;
-}
-
-header{
-    background:#ff4500;
-    padding:20px;
-    text-align:center;
-}
-
-header h1{
-    font-size:32px;
-}
-
-nav{
-    margin-top:15px;
-}
-
-nav a{
-    color:#fff;
-    text-decoration:none;
-    margin:0 10px;
-    font-weight:bold;
-}
-
-section{
-    padding:30px;
-    text-align:center;
-}
-
-button{
-    background:#ff4500;
-    color:#fff;
-    border:none;
-    padding:12px 25px;
-    border-radius:5px;
-    font-size:18px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff2200;
-}
-
-.games{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
-.game-card{
-    background:#222;
-    padding:20px;
-    border-radius:10px;
-    width:220px;
-}
-
-footer{
-    background:#000;
-    text-align:center;
-    padding:15px;
-    margin-top:30px;
-}
+OMOR-2.0-Gaming/
+│
+├── index.html
+├── style.css
+├── script.js
+│
+├── images/
+│   ├── logo.png
+│   ├── banner.jpg
+│   ├── freefire.jpg
+│   ├── bgmi.jpg
+│   └── pubg.jpg
+│
+├── pages/
+│   ├── about.html
+│   ├── contact.html
+│   ├── games.html
+│   ├── news.html
+│   ├── tournaments.html
+│   ├── login.html
+│   └── signup.html
+│
+└── README.md
