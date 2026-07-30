@@ -86,3 +86,17 @@ footer {
   margin:10px 0;
   font-size:18px;
 }
+.gallery{
+  padding:50px 20px;
+  text-align:center;
+}
+
+.gallery h2{
+  color:#00d9ff;
+  margin-bottom:20px;
+}
+
+.gallery img{
+  border-radius:10px;
+  margin-bottom:10px;
+}
