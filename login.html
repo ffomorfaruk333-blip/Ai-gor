@@ -208,8 +208,49 @@ message.textContent=
 }
 
 }
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  const loggedIn = localStorage.getItem("omorLoggedIn");
+  const user = JSON.parse(localStorage.getItem("omorUser"));
+
+  if (loggedIn === "true" && user) {
+
+    const nav = document.querySelector("nav");
+
+    if (nav) {
+
+      const welcome = document.createElement("span");
+      welcome.textContent = "👤 Welcome, " + (user.name || "User");
+      welcome.style.color = "#00ff88";
+      welcome.style.fontWeight = "bold";
+      welcome.style.marginLeft = "8px";
+
+      nav.appendChild(welcome);
+
+      const logoutBtn = document.createElement("a");
+      logoutBtn.href = "#";
+      logoutBtn.className = "signup-btn";
+      logoutBtn.textContent = "🚪 Logout";
+
+      logoutBtn.onclick = function (e) {
+        e.preventDefault();
+
+        localStorage.removeItem("omorLoggedIn");
+
+        window.location.reload();
+      };
+
+      nav.appendChild(logoutBtn);
+    }
+  }
+
+});
 </script>
+
+<footer>
+  <p>© 2026 OMOR 2.0 Gaming. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
