@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sign Up - OMOR 2.0 Gaming</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
+    url("https://wallpapercave.com/wp/wp5128415.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-family:Arial,sans-serif;
+  color:white;
+
+  padding:20px;
+}
+
+.signup-box{
+  width:100%;
+  max-width:420px;
+
+  background:#14141e;
+
+  padding:30px;
+
+  border-radius:15px;
+
+  border:1px solid #ff0055;
+
+  box-shadow:0 0 25px rgba(255,0,85,.15);
+
+  text-align:center;
+}
+
+h1{
+  color:#00eaff;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#aaa;
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+
+  padding:13px;
+
+  margin:8px 0;
+
+  border-radius:8px;
+
+  border:1px solid #444;
+
+  background:#0b0b12;
+
+  color:white;
+
+  outline:none;
+}
+
+input:focus{
+  border-color:#00eaff;
+}
+
+button{
+  width:100%;
+
+  padding:13px;
+
+  margin-top:12px;
+
+  border:0;
+
+  border-radius:8px;
+
+  background:#ff0055;
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00eaff;
+  color:#000;
+}
+
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+#message{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.links{
+  margin-top:20px;
+}
+
+.links a{
+  color:#00eaff;
+  text-decoration:none;
+}
+
+.home{
+  display:block;
+  margin-top:15px;
+  color:#aaa !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="signup-box">
+
+  <h1>📝 Sign Up</h1>
+
+  <p class="subtitle">
+    Create your OMOR 2.0 Gaming account
+  </p>
+
+  <input
+    type="text"
+    id="name"
+    placeholder="Enter your name"
+  >
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Enter your email"
+  >
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Create password"
+  >
+
+  <input
+    type="password"
+    id="confirmPassword"
+    placeholder="Confirm password"
+  >
+
+  <button
+    id="signupButton"
+    onclick="signup()"
+  >
+    Create Account
+  </button>
+
+  <p id="message"></p>
+
+  <div class="links">
+
+    <p>
+      Already have an account?
+      <a href="login.html">Login</a>
+    </p>
+
+    <a
+      class="home"
+      href="index.html"
+    >
+      ← Back to Home
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+
+function signup(){
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+  const message =
+    document.getElementById("message");
+
+  const signupButton =
+    document.getElementById("signupButton");
+
+
+  message.textContent = "";
+
+
+  if(!name || !email || !password || !confirmPassword){
+
+    message.style.color = "#ff4444";
+
+    message.textContent =
+      "Please fill in all fields.";
+
+    return;
+  }
+
+
+  if(password.length < 6){
+
+    message.style.color = "#ff4444";
+
+    message.textContent =
+      "Password must be at least 6 characters.";
+
+    return;
+  }
+
+
+  if(password !== confirmPassword){
+
+    message.style.color = "#ff4444";
+
+    message.textContent =
+      "Passwords do not match.";
+
+    return;
+  }
+
+
+  const user = {
+
+    name: name,
+
+    email: email,
+
+    password: password
+
+  };
+
+
+  signupButton.disabled = true;
+
+  signupButton.textContent =
+    "Creating Account...";
+
+
+  localStorage.setItem(
+    "omorUser",
+    JSON.stringify(user)
+  );
+
+
+  message.style.color =
+    "#00ff88";
+
+  message.textContent =
+    "Account created successfully!";
+
+
+  setTimeout(function(){
+
+    window.location.href =
+      "login.html";
+
+  },1200);
+
+}
+
+</script>
+
+</body>
+</html>
