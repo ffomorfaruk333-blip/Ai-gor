@@ -3,56 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Sign Up - OMOR 2.0 Gaming</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #111;
       color: white;
+      min-height: 100vh;
     }
 
     header {
       text-align: center;
-      padding: 25px;
+      padding: 25px 15px;
       background: #1b1b1b;
     }
 
     header h1 {
       margin: 0;
+      font-size: 28px;
     }
 
     .hero {
+      width: 100%;
       max-width: 420px;
       margin: 50px auto;
       padding: 30px;
       background: #1b1b1b;
       border-radius: 15px;
-      box-sizing: border-box;
     }
 
     .hero h2 {
       text-align: center;
-      margin-bottom: 25px;
+      margin: 0 0 25px;
+    }
+
+    .input-box {
+      margin-bottom: 12px;
     }
 
     input {
       width: 100%;
       padding: 14px;
-      margin: 8px 0;
-      box-sizing: border-box;
       border: 1px solid #444;
       border-radius: 8px;
       background: #222;
       color: white;
       font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #00c853;
     }
 
     button {
       width: 100%;
       padding: 14px;
-      margin-top: 15px;
+      margin-top: 10px;
       border: none;
       border-radius: 8px;
       background: #00c853;
@@ -65,6 +79,30 @@
       background: #00a844;
     }
 
+    button:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+
+    #message {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .success {
+      background: #063d1e;
+      color: #00e676;
+    }
+
+    .error {
+      background: #3d0808;
+      color: #ff5252;
+    }
+
     p {
       text-align: center;
       margin-top: 20px;
@@ -73,6 +111,14 @@
     a {
       color: #00c853;
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -84,35 +130,58 @@
   </header>
 
   <section class="hero">
+
     <h2>Create Your Account</h2>
 
     <form id="signupForm">
 
-      <input
-        type="text"
-        placeholder="Full Name"
-        required
-      >
+      <div class="input-box">
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Full Name"
+          autocomplete="name"
+          required
+        >
+      </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        required
-      >
+      <div class="input-box">
+        <input
+          id="email"
+          type="email"
+          placeholder="Email / Gmail"
+          autocomplete="email"
+          required
+        >
+      </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        required
-      >
+      <div class="input-box">
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="new-password"
+          minlength="6"
+          required
+        >
+      </div>
 
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        required
-      >
+      <div class="input-box">
+        <input
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          autocomplete="new-password"
+          minlength="6"
+          required
+        >
+      </div>
 
-      <button type="submit">Sign Up</button>
+      <button id="signupButton" type="submit">
+        Sign Up
+      </button>
+
+      <div id="message"></div>
 
     </form>
 
@@ -120,58 +189,301 @@
       Already have an account?
       <a href="login.html">Login</a>
     </p>
+
   </section>
 
-  <!-- Supabase Library -->
+
+  <!-- =========================================
+       SUPABASE LIBRARY
+       ========================================= -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-  const SUPABASE_URL = "https://lkucknohutrpumlipzae.supabase.co";
 
-  const SUPABASE_KEY = "sb_publishable__HkrqPL9ZFYBVK51_B8WnQ_WvtLuQuV";
+  <script>
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+    /* =========================================
+       SUPABASE CONFIG
+       ========================================= */
 
-  const form = document.getElementById("signupForm");
+    const SUPABASE_URL =
+      "https://lkucknohutrpumlipzae.supabase.co";
 
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
+    const SUPABASE_KEY =
+      "sb_publishable__HkrqPL9ZFYBVK51_B8WnQ_WvtLuQuV";
 
-    const inputs = form.querySelectorAll("input");
 
-    const fullName = inputs[0].value.trim();
-    const email = inputs[1].value.trim();
-    const password = inputs[2].value;
-    const confirmPassword = inputs[3].value;
+    /* =========================================
+       CREATE SUPABASE CLIENT
+       ========================================= */
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+
+    /* =========================================
+       GET FORM ELEMENTS
+       ========================================= */
+
+    const form =
+      document.getElementById("signupForm");
+
+    const fullNameInput =
+      document.getElementById("fullName");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const confirmPasswordInput =
+      document.getElementById("confirmPassword");
+
+    const signupButton =
+      document.getElementById("signupButton");
+
+    const message =
+      document.getElementById("message");
+
+
+    /* =========================================
+       SHOW MESSAGE
+       ========================================= */
+
+    function showMessage(text, type) {
+
+      message.textContent = text;
+
+      message.className = type;
+
+      message.style.display = "block";
     }
 
-    const { data, error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: {
-          full_name: fullName
+
+    /* =========================================
+       HIDE MESSAGE
+       ========================================= */
+
+    function hideMessage() {
+
+      message.textContent = "";
+
+      message.className = "";
+
+      message.style.display = "none";
+    }
+
+
+    /* =========================================
+       SIGN UP
+       ========================================= */
+
+    form.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+        hideMessage();
+
+        const fullName =
+          fullNameInput.value.trim();
+
+        const email =
+          emailInput.value.trim().toLowerCase();
+
+        const password =
+          passwordInput.value;
+
+        const confirmPassword =
+          confirmPasswordInput.value;
+
+
+        /* -------------------------------------
+           CHECK NAME
+           ------------------------------------- */
+
+        if (!fullName) {
+
+          showMessage(
+            "Please enter your full name.",
+            "error"
+          );
+
+          return;
         }
+
+
+        /* -------------------------------------
+           CHECK EMAIL
+           ------------------------------------- */
+
+        if (!email) {
+
+          showMessage(
+            "Please enter your Gmail or Email.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        /* -------------------------------------
+           CHECK PASSWORD LENGTH
+           ------------------------------------- */
+
+        if (password.length < 6) {
+
+          showMessage(
+            "Password must be at least 6 characters.",
+            "error"
+          );
+
+          return;
+        }
+
+
+        /* -------------------------------------
+           CHECK PASSWORD MATCH
+           ------------------------------------- */
+
+        if (password !== confirmPassword) {
+
+          showMessage(
+            "Passwords do not match!",
+            "error"
+          );
+
+          return;
+        }
+
+
+        /* -------------------------------------
+           LOADING
+           ------------------------------------- */
+
+        signupButton.disabled = true;
+
+        signupButton.textContent =
+          "Creating Account...";
+
+        signupButton.classList.add("loading");
+
+
+        try {
+
+          /* -----------------------------------
+             SUPABASE SIGN UP
+             ----------------------------------- */
+
+          const { data, error } =
+            await supabaseClient.auth.signUp({
+
+              email: email,
+
+              password: password,
+
+              options: {
+
+                data: {
+                  full_name: fullName
+                }
+
+              }
+
+            });
+
+
+          /* -----------------------------------
+             ERROR
+             ----------------------------------- */
+
+          if (error) {
+
+            console.error(
+              "Supabase signup error:",
+              error
+            );
+
+            showMessage(
+              error.message,
+              "error"
+            );
+
+            signupButton.disabled = false;
+
+            signupButton.textContent =
+              "Sign Up";
+
+            signupButton.classList.remove(
+              "loading"
+            );
+
+            return;
+          }
+
+
+          /* -----------------------------------
+             SUCCESS
+             ----------------------------------- */
+
+          showMessage(
+            "Account created successfully! Please check your email and verify your account.",
+            "success"
+          );
+
+
+          /* -----------------------------------
+             CLEAR FORM
+             ----------------------------------- */
+
+          form.reset();
+
+
+          /* -----------------------------------
+             WAIT THEN GO LOGIN
+             ----------------------------------- */
+
+          setTimeout(function() {
+
+            window.location.href =
+              "login.html";
+
+          }, 3000);
+
+
+        } catch (err) {
+
+          console.error(
+            "Unexpected error:",
+            err
+          );
+
+          showMessage(
+            "Something went wrong. Please try again.",
+            "error"
+          );
+
+          signupButton.disabled = false;
+
+          signupButton.textContent =
+            "Sign Up";
+
+          signupButton.classList.remove(
+            "loading"
+          );
+
+        }
+
       }
-    });
+    );
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
-
-    alert("Account created successfully! Please check your email to verify your account.");
-
-    form.reset();
-  });
-</script>
+  </script>
 
 </body>
 </html>
