@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tournament Registration - OMOR 2.0 Gaming</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
+    url("https://wallpapercave.com/wp/wp5128415.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-family:Arial,sans-serif;
+  color:white;
+  padding:20px;
+}
+
+.register-box{
+  width:100%;
+  max-width:430px;
+
+  background:#14141e;
+  padding:30px;
+
+  border-radius:15px;
+  border:1px solid #ff0055;
+
+  box-shadow:0 0 25px rgba(255,0,85,.15);
+
+  text-align:center;
+}
+
+h1{
+  color:#00eaff;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#aaa;
+  margin-bottom:20px;
+}
+
+.user-info{
+  background:#0b0b12;
+  border:1px solid #29293a;
+  border-radius:8px;
+  padding:12px;
+  margin-bottom:15px;
+  color:#00ff88;
+  font-weight:bold;
+}
+
+input,
+select{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+
+  border-radius:8px;
+  border:1px solid #444;
+
+  background:#0b0b12;
+  color:white;
+
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:#00eaff;
+}
+
+button{
+  width:100%;
+  padding:13px;
+
+  margin-top:12px;
+
+  border:0;
+  border-radius:8px;
+
+  background:#ff0055;
+  color:white;
+
+  font-size:16px;
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00eaff;
+  color:#000;
+}
+
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+#message{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.home{
+  display:block;
+  margin-top:20px;
+  color:#aaa;
+  text-decoration:none;
+}
+
+.home:hover{
+  color:#00eaff;
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+
+  background:#050509;
+  text-align:center;
+
+  padding:12px;
+
+  color:#aaa;
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="register-box">
+
+  <h1>🏆 Tournament Registration</h1>
+
+  <p class="subtitle">
+    Free Fire Squad Tournament
+  </p>
+
+  <div id="userInfo" class="user-info">
+    Checking login...
+  </div>
+
+  <input
+    type="text"
+    id="playerName"
+    placeholder="Player Name"
+  >
+
+  <input
+    type="text"
+    id="uid"
+    placeholder="Free Fire UID"
+  >
+
+  <input
+    type="text"
+    id="teamName"
+    placeholder="Team Name"
+  >
+
+  <select id="teamSize">
+    <option value="">Select Team Size</option>
+    <option value="1">Solo</option>
+    <option value="2">2 Players</option>
+    <option value="3">3 Players</option>
+    <option value="4">4 Players</option>
+  </select>
+
+  <button
+    id="registerButton"
+    onclick="registerTournament()"
+  >
+    Register Now
+  </button>
+
+  <p id="message"></p>
+
+  <a
+    class="home"
+    href="index.html"
+  >
+    ← Back to Home
+  </a>
+
+</div>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const loggedIn =
+    localStorage.getItem("omorLoggedIn");
+
+  const savedUser =
+    localStorage.getItem("omorUser");
+
+  const userInfo =
+    document.getElementById("userInfo");
+
+  const registerButton =
+    document.getElementById("registerButton");
+
+
+  /*
+   * LOGIN CHECK
+   */
+
+  if(loggedIn !== "true" || !savedUser){
+
+    userInfo.style.color = "#ff4444";
+
+    userInfo.textContent =
+      "🔐 Please Login first.";
+
+    registerButton.disabled = true;
+
+    setTimeout(function(){
+
+      window.location.href =
+        "login.html";
+
+    },1500);
+
+    return;
+  }
+
+
+  /*
+   * GET USER
+   */
+
+  let user;
+
+  try{
+
+    user = JSON.parse(savedUser);
+
+  }catch(error){
+
+    userInfo.style.color =
+      "#ff4444";
+
+    userInfo.textContent =
+      "Account data error.";
+
+    registerButton.disabled = true;
+
+    return;
+  }
+
+
+  /*
+   * SHOW LOGGED IN USER
+   */
+
+  userInfo.style.color =
+    "#00ff88";
+
+  userInfo.textContent =
+    "👤 Logged in as: " +
+    (user.name || "User");
+
+
+  /*
+   * AUTO FILL NAME
+   */
+
+  document.getElementById("playerName").value =
+    user.name || "";
+
+});
+
+
+function registerTournament(){
+
+  const playerName =
+    document.getElementById("playerName")
+    .value.trim();
+
+  const uid =
+    document.getElementById("uid")
+    .value.trim();
+
+  const teamName =
+    document.getElementById("teamName")
+    .value.trim();
+
+  const teamSize =
+    document.getElementById("teamSize")
+    .value;
+
+  const message =
+    document.getElementById("message");
+
+  const button =
+    document.getElementById("registerButton");
+
+
+  message.textContent = "";
+
+
+  /*
+   * CHECK LOGIN AGAIN
+   */
+
+  const loggedIn =
+    localStorage.getItem("omorLoggedIn");
+
+  const savedUser =
+    localStorage.getItem("omorUser");
+
+
+  if(loggedIn !== "true" || !savedUser){
+
+    message.style.color =
+      "#ff4444";
+
+    message.textContent =
+      "Please login first.";
+
+    return;
+  }
+
+
+  /*
+   * VALIDATION
+   */
+
+  if(!playerName ||
+     !uid ||
+     !teamName ||
+     !teamSize){
+
+    message.style.color =
+      "#ff4444";
+
+    message.textContent =
+      "Please fill in all fields.";
+
+    return;
+  }
+
+
+  /*
+   * SAVE TOURNAMENT REGISTRATION
+   */
+
+  const registration = {
+
+    playerName: playerName,
+
+    uid: uid,
+
+    teamName: teamName,
+
+    teamSize: teamSize,
+
+    date: new Date().toISOString()
+
+  };
+
+
+  localStorage.setItem(
+    "omorTournamentRegistration",
+    JSON.stringify(registration)
+  );
+
+
+  /*
+   * SUCCESS
+   */
+
+  button.disabled = true;
+
+  button.textContent =
+    "Registered ✓";
+
+
+  message.style.color =
+    "#00ff88";
+
+  message.textContent =
+    "🎉 Tournament registration successful!";
+
+
+  /*
+   * GO HOME
+   */
+
+  setTimeout(function(){
+
+    window.location.href =
+      "index.html";
+
+  },1500);
+
+}
+
+</script>
+
+
+<footer>
+
+<p>
+© 2026 OMOR 2.0 Gaming. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
