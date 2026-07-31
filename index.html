@@ -10,388 +10,514 @@
 
 <style>
 
+/* =========================
+   RESET
+========================= */
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#0a0a0f;
-  color:white;
+font-family:Arial,sans-serif;
+background:#08080d;
+color:white;
+line-height:1.5;
 }
 
-/* ================= HEADER ================= */
+a{
+text-decoration:none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-  background:#11111a;
-  padding:15px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  border-bottom:2px solid #ff0055;
-  position:sticky;
-  top:0;
-  z-index:1000;
+background:#11111a;
+padding:12px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+border-bottom:2px solid #ff0055;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .logo h1{
-  color:#00eaff;
-  font-size:22px;
+color:#00eaff;
+font-size:21px;
+white-space:nowrap;
 }
 
 nav{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:14px;
+color:white;
+font-weight:bold;
+font-size:13px;
 }
 
 nav a:hover{
-  color:#00eaff;
+color:#00eaff;
 }
 
 .login-btn{
-  background:#00eaff;
-  color:#000 !important;
-  padding:8px 14px;
-  border-radius:7px;
+background:#00eaff;
+color:#000 !important;
+padding:7px 12px;
+border-radius:7px;
 }
 
 .signup-btn{
-  background:#ff0055;
-  color:white !important;
-  padding:8px 14px;
-  border-radius:7px;
+background:#ff0055;
+color:white !important;
+padding:7px 12px;
+border-radius:7px;
 }
 
 #userArea{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
+display:flex;
+align-items:center;
+gap:8px;
+flex-wrap:wrap;
 }
 
 .welcome{
-  color:#00ff88;
-  font-weight:bold;
+color:#00ff88;
+font-weight:bold;
+font-size:13px;
 }
 
-/* ================= HERO ================= */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  min-height:55vh;
+min-height:55vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px 20px;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+background:
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.88)
+),
+url("https://wallpapercave.com/wp/wp5128415.jpg");
 
-  text-align:center;
-
-  padding:30px 20px;
-
-  background:
-  linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-  url("https://wallpapercave.com/wp/wp5128415.jpg");
-
-  background-size:cover;
-  background-position:center;
+background-size:cover;
+background-position:center;
 }
 
 .hero h2{
-  font-size:42px;
-  color:#00eaff;
-  margin-bottom:15px;
+font-size:40px;
+color:#00eaff;
+margin-bottom:12px;
 }
 
 .hero p{
-  font-size:19px;
-  margin-bottom:25px;
+font-size:18px;
+margin-bottom:22px;
 }
-
-.hero .btn{
-  margin-top:5px;
-}
-
-/* ================= BUTTON ================= */
 
 .btn{
-  display:inline-block;
-  padding:12px 25px;
-  background:#ff0055;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
-  transition:.2s;
+display:inline-block;
+padding:11px 23px;
+background:#ff0055;
+color:white;
+border-radius:8px;
+font-weight:bold;
+border:none;
+cursor:pointer;
 }
 
 .btn:hover{
-  background:#00eaff;
-  color:#000;
-  transform:translateY(-2px);
+background:#ff2470;
 }
 
-/* ================= GENERAL SECTION ================= */
+
+/* =========================
+   SECTION
+========================= */
 
 section{
-  padding:60px 5%;
-  text-align:center;
+padding:55px 5%;
+text-align:center;
 }
 
 section h2{
-  color:#00eaff;
-  margin-bottom:30px;
-  font-size:30px;
+color:#00eaff;
+margin-bottom:28px;
+font-size:29px;
 }
 
-/* ================= GAME CARD ================= */
+
+/* =========================
+   GAME CARDS
+========================= */
 
 .card{
-  display:inline-block;
-  vertical-align:top;
-
-  width:30%;
-  min-width:250px;
-
-  margin:10px;
-  padding:25px;
-
-  background:#171722;
-
-  border:1px solid #29293a;
-
-  border-radius:12px;
-
-  box-shadow:0 0 15px rgba(0,234,255,.05);
-
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#00eaff;
+display:inline-block;
+vertical-align:top;
+width:30%;
+min-width:250px;
+margin:8px;
+padding:24px;
+background:#15151f;
+border:1px solid #29293a;
+border-radius:12px;
 }
 
 .card h3{
-  color:#ff0055;
-  margin-bottom:10px;
+color:#ff0055;
+margin-bottom:9px;
 }
 
-/* ================= TOURNAMENT ================= */
+
+/* =========================
+   TOURNAMENT SECTION
+========================= */
+
+.tournament-section{
+background:#0b0b12;
+}
 
 .tournament-grid{
-  display:flex;
-  justify-content:center;
-  align-items:stretch;
-  flex-wrap:wrap;
-  gap:15px;
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:
+repeat(3,minmax(0,1fr));
+gap:15px;
+text-align:left;
 }
 
 .tournament-card{
-
-  width:280px;
-
-  background:#151520;
-
-  border:1px solid #303044;
-
-  border-radius:14px;
-
-  padding:20px;
-
-  text-align:left;
-
-  box-shadow:0 0 18px rgba(255,0,85,.08);
-
-  transition:.2s;
+background:#151520;
+border:1px solid #2a2a3a;
+border-radius:13px;
+padding:14px;
+box-shadow:0 5px 20px rgba(0,0,0,.25);
 }
 
 .tournament-card:hover{
-  transform:translateY(-5px);
-  border-color:#ff0055;
-}
-
-.tournament-title{
-  color:#00eaff;
-  font-size:19px;
-  margin-bottom:12px;
+border-color:#00eaff;
+transform:translateY(-3px);
+transition:.2s;
 }
 
 .status{
-  display:inline-block;
-
-  padding:5px 9px;
-
-  border-radius:20px;
-
-  font-size:11px;
-
-  font-weight:bold;
-
-  margin-bottom:15px;
+display:inline-block;
+font-size:10px;
+font-weight:bold;
+padding:4px 8px;
+border-radius:20px;
+margin-bottom:9px;
 }
 
-.status-free{
-  background:#00ff88;
-  color:#000;
+.free{
+background:#00ff88;
+color:#001b0e;
 }
 
-.status-upcoming{
-  background:#00eaff;
-  color:#000;
+.upcoming{
+background:#00eaff;
+color:#00151a;
 }
 
-.status-hot{
-  background:#ff0055;
-  color:white;
+.hot{
+background:#ff0055;
+color:white;
+}
+
+.soon{
+background:#ffaa00;
+color:#160d00;
+}
+
+.tournament-title{
+color:#00eaff;
+font-size:16px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
 .tournament-info{
-  background:#0c0c14;
-
-  border-radius:9px;
-
-  padding:12px;
-
-  margin:10px 0 15px;
+background:#0c0c13;
+border-radius:8px;
+padding:8px;
 }
 
-.tournament-row{
-  display:flex;
-  justify-content:space-between;
-
-  padding:6px 0;
-
-  border-bottom:1px solid #252535;
-
-  font-size:14px;
+.info-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:5px 2px;
+border-bottom:1px solid #20202b;
+font-size:12px;
 }
 
-.tournament-row:last-child{
-  border-bottom:0;
+.info-row:last-child{
+border-bottom:none;
 }
 
-.tournament-row span:first-child{
-  color:#999;
-}
-
-.tournament-row span:last-child{
-  color:white;
-  font-weight:bold;
+.label{
+color:#aaa;
 }
 
 .entry{
-  color:#00ff88 !important;
+color:#00ff88;
+font-weight:bold;
 }
 
 .prize{
-  color:#ffd000 !important;
+color:#ffd21c;
+font-weight:bold;
 }
 
-.slots{
-  color:#00eaff !important;
+.players{
+color:#00eaff;
+font-weight:bold;
 }
 
-.tournament-card .btn{
-  width:100%;
-  text-align:center;
+.time{
+color:white;
+font-weight:bold;
 }
 
-/* ================= NEWS ================= */
+.join-btn{
+display:block;
+width:100%;
+text-align:center;
+background:#ff0055;
+color:white;
+padding:10px;
+border-radius:7px;
+font-size:13px;
+font-weight:bold;
+margin-top:12px;
+}
+
+.join-btn:hover{
+background:#ff2670;
+}
+
+
+/* =========================
+   NEWS
+========================= */
+
+.news-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:
+repeat(3,minmax(0,1fr));
+gap:15px;
+}
 
 .news-card{
-  text-align:center;
+background:#15151f;
+border:1px solid #29293a;
+border-radius:12px;
+padding:20px;
 }
 
-/* ================= GALLERY ================= */
-
-.gallery img{
-  width:100%;
-  height:190px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-bottom:10px;
+.news-card h3{
+color:#00eaff;
+margin-bottom:8px;
 }
 
-/* ================= CONTACT ================= */
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:
+repeat(3,minmax(0,1fr));
+gap:15px;
+}
+
+.gallery-card{
+background:#15151f;
+border:1px solid #29293a;
+border-radius:12px;
+overflow:hidden;
+}
+
+.gallery-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+}
+
+.gallery-card h3{
+padding:13px;
+color:#00eaff;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact p{
-  margin:10px;
-  color:#ccc;
+margin:10px;
+color:#ddd;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-  background:#050509;
-  text-align:center;
-  padding:25px;
-  color:#aaa;
+background:#050509;
+text-align:center;
+padding:25px;
+color:#aaa;
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:700px){
+/* =========================
+   MOBILE
+========================= */
 
-  header{
-    flex-direction:column;
-    gap:12px;
-  }
+@media(max-width:850px){
 
-  nav{
-    justify-content:center;
-  }
+header{
+flex-direction:column;
+gap:10px;
+}
 
-  .hero{
-    min-height:55vh;
-  }
+nav{
+justify-content:center;
+gap:9px;
+}
 
-  .hero h2{
-    font-size:30px;
-  }
+.hero h2{
+font-size:30px;
+}
 
-  .hero p{
-    font-size:16px;
-  }
+.hero p{
+font-size:16px;
+}
 
-  .card{
-    width:90%;
-  }
+.tournament-grid{
+grid-template-columns:
+repeat(2,minmax(0,1fr));
+}
 
-  .tournament-card{
-    width:100%;
-    max-width:360px;
-  }
+.news-grid{
+grid-template-columns:
+repeat(2,minmax(0,1fr));
+}
 
+.gallery-grid{
+grid-template-columns:
+repeat(2,minmax(0,1fr));
+}
+
+}
+
+@media(max-width:600px){
+
+header{
+padding:10px 3%;
+}
+
+.logo h1{
+font-size:18px;
+}
+
+nav a{
+font-size:11px;
+}
+
+.hero{
+min-height:55vh;
+}
+
+.hero h2{
+font-size:27px;
+}
+
+.tournament-grid{
+grid-template-columns:1fr;
+max-width:420px;
+}
+
+.news-grid{
+grid-template-columns:1fr;
+}
+
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.card{
+width:90%;
+}
+
+section{
+padding:45px 4%;
+}
+
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.tournament-heading{
+color:#00eaff;
+}
+
+.small-note{
+color:#888;
+font-size:13px;
+margin-top:-18px;
+margin-bottom:25px;
 }
 
 </style>
 
 </head>
 
+
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <div class="logo">
-
 <h1>🎮 OMOR 2.0 Gaming</h1>
-
 </div>
 
 
@@ -412,11 +538,17 @@ footer{
 
 <div id="userArea">
 
-<a href="login.html" class="login-btn" id="loginBtn">
+<a
+href="login.html"
+class="login-btn"
+id="loginBtn">
 🔐 Login
 </a>
 
-<a href="signup.html" class="signup-btn" id="signupBtn">
+<a
+href="signup.html"
+class="signup-btn"
+id="signupBtn">
 📝 Sign Up
 </a>
 
@@ -427,24 +559,36 @@ footer{
 </header>
 
 
-<!-- ================= HOME ================= -->
 
-<section class="hero" id="home">
+<!-- =========================
+     HERO
+========================= -->
 
-<h2>WELCOME TO OMOR 2.0 GAMING</h2>
+<section
+class="hero"
+id="home">
+
+<h2>
+WELCOME TO OMOR 2.0 GAMING
+</h2>
 
 <p>
 Free Fire • PUBG Mobile • BGMI • Esports
 </p>
 
-<a href="signup.html" class="btn">
+<a
+href="signup.html"
+class="btn">
 🚀 Join Community
 </a>
 
 </section>
 
 
-<!-- ================= GAMES ================= -->
+
+<!-- =========================
+     GAMES
+========================= -->
 
 <section id="games">
 
@@ -456,7 +600,8 @@ Free Fire • PUBG Mobile • BGMI • Esports
 <h3>Free Fire</h3>
 
 <p>
-Latest Events, Redeem Codes & Tournament News.
+Latest Events, Redeem Codes
+& Tournament News.
 </p>
 
 </div>
@@ -478,7 +623,8 @@ Updates, Tips & Esports News.
 <h3>BGMI</h3>
 
 <p>
-Competitive Gaming & Community Updates.
+Competitive Gaming
+& Community Updates.
 </p>
 
 </div>
@@ -486,273 +632,572 @@ Competitive Gaming & Community Updates.
 </section>
 
 
-<!-- ================= TOURNAMENT ================= -->
 
-<section id="tournament">
+<!-- =========================
+     TOURNAMENTS
+========================= -->
 
-<h2>🏆 Tournaments</h2>
+<section
+id="tournament"
+class="tournament-section">
+
+<h2 class="tournament-heading">
+🏆 Tournaments
+</h2>
+
+<p class="small-note">
+Choose your match and join the tournament.
+</p>
+
 
 <div class="tournament-grid">
 
 
-<!-- FREE -->
+<!-- 1 -->
 
 <div class="tournament-card">
 
-<span class="status status-free">
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+🐺 Lone Wolf 2V2
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳5</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳40</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">4/4</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">9:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 2 -->
+
+<div class="tournament-card">
+
+<span class="status hot">
+🔥 HOT
+</span>
+
+<div class="tournament-title">
+🐺 Lone Wolf 1V1
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳10</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳80</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">6/8</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">10:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 3 -->
+
+<div class="tournament-card">
+
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+⚔️ Custom 2V2
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳10</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳70</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">6/8</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">10:30 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 4 -->
+
+<div class="tournament-card">
+
+<span class="status hot">
+🔥 HOT
+</span>
+
+<div class="tournament-title">
+🎮 Lone Wolf Custom Match
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳5</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳40</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">8/12</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">11:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 5 -->
+
+<div class="tournament-card">
+
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+🔥 Clash Squad 2V2
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳10</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳80</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">12/16</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">11:30 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 6 -->
+
+<div class="tournament-card">
+
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+🎯 BR Match
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳20</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳160</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">24/48</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">12:00 AM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 7 -->
+
+<div class="tournament-card">
+
+<span class="status free">
 FREE
 </span>
 
-<h3 class="tournament-title">
+<div class="tournament-title">
 🆓 Free Fire Free Match
-</h3>
+</div>
 
 <div class="tournament-info">
 
-<div class="tournament-row">
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">FREE</span>
+</div>
 
-<span>🎟️ Entry</span>
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳50</span>
+</div>
 
-<span class="entry">
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">12/24</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">9:30 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 8 -->
+
+<div class="tournament-card">
+
+<span class="status hot">
+🔥 HOT
+</span>
+
+<div class="tournament-title">
+⚡ Lose To Win
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳10</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳80</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">8/12</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">1:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 9 -->
+
+<div class="tournament-card">
+
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+🏆 Pro League
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳20</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳200</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">20/24</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">2:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 10 -->
+
+<div class="tournament-card">
+
+<span class="status soon">
+⏳ SOON
+</span>
+
+<div class="tournament-title">
+🎮 Special Free Match
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">FREE</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳30</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">4/8</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">3:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 11 -->
+
+<div class="tournament-card">
+
+<span class="status upcoming">
+UPCOMING
+</span>
+
+<div class="tournament-title">
+🐺 Lone Wolf 1V2
+</div>
+
+<div class="tournament-info">
+
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">৳5</span>
+</div>
+
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳35</span>
+</div>
+
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">3/3</span>
+</div>
+
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">4:00 PM</span>
+</div>
+
+</div>
+
+<a
+href="register.html"
+class="join-btn">
+JOIN NOW
+</a>
+
+</div>
+
+
+
+<!-- 12 -->
+
+<div class="tournament-card">
+
+<span class="status free">
 FREE
 </span>
 
+<div class="tournament-title">
+🎯 Training Match
 </div>
-
-
-<div class="tournament-row">
-
-<span>🏆 Prize</span>
-
-<span class="prize">
-৳50
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>👥 Players</span>
-
-<span class="slots">
-12/24
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>⏰ Time</span>
-
-<span>
-9:00 PM
-</span>
-
-</div>
-
-</div>
-
-<a href="register.html" class="btn">
-JOIN NOW
-</a>
-
-</div>
-
-
-<!-- ENTRY 5 -->
-
-<div class="tournament-card">
-
-<span class="status status-upcoming">
-UPCOMING
-</span>
-
-<h3 class="tournament-title">
-🔥 Free Fire Squad
-</h3>
 
 <div class="tournament-info">
 
-<div class="tournament-row">
-
-<span>🎟️ Entry</span>
-
-<span class="entry">
-৳5
-</span>
-
+<div class="info-row">
+<span class="label">🎟️ Entry</span>
+<span class="entry">FREE</span>
 </div>
 
-
-<div class="tournament-row">
-
-<span>🏆 Prize</span>
-
-<span class="prize">
-৳40
-</span>
-
+<div class="info-row">
+<span class="label">🏆 Prize</span>
+<span class="prize">৳20</span>
 </div>
 
-
-<div class="tournament-row">
-
-<span>👥 Players</span>
-
-<span class="slots">
-8/16
-</span>
-
+<div class="info-row">
+<span class="label">👥 Players</span>
+<span class="players">10/20</span>
 </div>
 
-
-<div class="tournament-row">
-
-<span>⏰ Time</span>
-
-<span>
-10:00 PM
-</span>
-
+<div class="info-row">
+<span class="label">⏰ Time</span>
+<span class="time">5:00 PM</span>
 </div>
 
 </div>
 
-<a href="register.html" class="btn">
-JOIN NOW
-</a>
-
-</div>
-
-
-<!-- ENTRY 10 -->
-
-<div class="tournament-card">
-
-<span class="status status-hot">
-HOT
-</span>
-
-<h3 class="tournament-title">
-⚡ Free Fire Clash Squad
-</h3>
-
-<div class="tournament-info">
-
-<div class="tournament-row">
-
-<span>🎟️ Entry</span>
-
-<span class="entry">
-৳10
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>🏆 Prize</span>
-
-<span class="prize">
-৳80
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>👥 Players</span>
-
-<span class="slots">
-16/24
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>⏰ Time</span>
-
-<span>
-11:00 PM
-</span>
-
-</div>
-
-</div>
-
-<a href="register.html" class="btn">
-JOIN NOW
-</a>
-
-</div>
-
-
-<!-- ENTRY 20 -->
-
-<div class="tournament-card">
-
-<span class="status status-upcoming">
-UPCOMING
-</span>
-
-<h3 class="tournament-title">
-🏆 Free Fire BR Match
-</h3>
-
-<div class="tournament-info">
-
-<div class="tournament-row">
-
-<span>🎟️ Entry</span>
-
-<span class="entry">
-৳20
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>🏆 Prize</span>
-
-<span class="prize">
-৳160
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>👥 Players</span>
-
-<span class="slots">
-24/48
-</span>
-
-</div>
-
-
-<div class="tournament-row">
-
-<span>⏰ Time</span>
-
-<span>
-12:00 AM
-</span>
-
-</div>
-
-</div>
-
-<a href="register.html" class="btn">
+<a
+href="register.html"
+class="join-btn">
 JOIN NOW
 </a>
 
@@ -764,14 +1209,19 @@ JOIN NOW
 </section>
 
 
-<!-- ================= NEWS ================= -->
+
+<!-- =========================
+     NEWS
+========================= -->
 
 <section id="news">
 
 <h2>📰 Latest Gaming News</h2>
 
+<div class="news-grid">
 
-<div class="card news-card">
+
+<div class="news-card">
 
 <h3>🔥 Free Fire</h3>
 
@@ -782,7 +1232,7 @@ Free Fire OB Update Coming Soon!
 </div>
 
 
-<div class="card news-card">
+<div class="news-card">
 
 <h3>🎯 PUBG Mobile</h3>
 
@@ -793,7 +1243,7 @@ New Royale Pass Released!
 </div>
 
 
-<div class="card news-card">
+<div class="news-card">
 
 <h3>⚡ BGMI</h3>
 
@@ -803,87 +1253,114 @@ New competitive gaming updates available.
 
 </div>
 
+
+</div>
+
 </section>
 
 
-<!-- ================= GALLERY ================= -->
 
-<section class="gallery" id="gallery">
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section
+class="gallery"
+id="gallery">
 
 <h2>🎮 Game Gallery</h2>
 
+<div class="gallery-grid">
 
-<div class="card">
+
+<div class="gallery-card">
 
 <img
 src="https://wallpapercave.com/wp/wp5128415.jpg"
-alt="Free Fire"
->
+alt="Free Fire">
 
 <h3>Free Fire</h3>
 
 </div>
 
 
-<div class="card">
+<div class="gallery-card">
 
 <img
 src="https://wallpapercave.com/wp/wp6113649.jpg"
-alt="PUBG Mobile"
->
+alt="PUBG Mobile">
 
 <h3>PUBG Mobile</h3>
 
 </div>
 
 
-<div class="card">
+<div class="gallery-card">
 
 <img
 src="https://wallpapercave.com/wp/wp7418474.jpg"
-alt="BGMI"
->
+alt="BGMI">
 
 <h3>BGMI</h3>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact">
 
 <h2>📞 Contact Us</h2>
 
+<div class="contact">
+
 <p>
-📧 Email: ffomorfaruk333@gmail.com
+📧 Email:
+ffomorfaruk333@gmail.com
 </p>
 
 <p>
-▶️ YouTube: OMOR 2.0 Gaming
+▶️ YouTube:
+OMOR 2.0 Gaming
 </p>
 
 <p>
-📘 Facebook: OMOR 2.0 Gaming
+📘 Facebook:
+OMOR 2.0 Gaming
 </p>
+
+</div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
 <p>
-© 2026 OMOR 2.0 Gaming. All Rights Reserved.
+© 2026 OMOR 2.0 Gaming.
+All Rights Reserved.
 </p>
 
 </footer>
 
 
-<!-- ================= LOGIN SYSTEM ================= -->
+
+<!-- =========================
+     LOGIN SYSTEM
+========================= -->
 
 <script>
 
@@ -892,19 +1369,29 @@ document.addEventListener(
 function(){
 
 const loggedIn =
-localStorage.getItem("omorLoggedIn");
+localStorage.getItem(
+"omorLoggedIn"
+);
 
 const savedUser =
-localStorage.getItem("omorUser");
+localStorage.getItem(
+"omorUser"
+);
 
 const loginBtn =
-document.getElementById("loginBtn");
+document.getElementById(
+"loginBtn"
+);
 
 const signupBtn =
-document.getElementById("signupBtn");
+document.getElementById(
+"signupBtn"
+);
 
 const userArea =
-document.getElementById("userArea");
+document.getElementById(
+"userArea"
+);
 
 
 if(
@@ -916,7 +1403,8 @@ let user;
 
 try{
 
-user = JSON.parse(savedUser);
+user =
+JSON.parse(savedUser);
 
 }catch(error){
 
@@ -930,21 +1418,18 @@ return;
 
 
 if(loginBtn){
-
 loginBtn.remove();
-
 }
 
-
 if(signupBtn){
-
 signupBtn.remove();
-
 }
 
 
 const welcome =
-document.createElement("span");
+document.createElement(
+"span"
+);
 
 welcome.className =
 "welcome";
@@ -960,10 +1445,11 @@ welcome
 
 
 const logoutBtn =
-document.createElement("a");
+document.createElement(
+"a"
+);
 
-logoutBtn.href =
-"#";
+logoutBtn.href="#";
 
 logoutBtn.className =
 "signup-btn";
