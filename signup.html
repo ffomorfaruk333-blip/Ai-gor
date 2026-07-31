@@ -125,66 +125,53 @@
   <!-- Supabase Library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <script>
+<script>
+  const SUPABASE_URL = "https://lkucknohutrpumlipzae.supabase.co";
 
-    const SUPABASE_URL =
-      "https://lkucknohutrpumlipzae.supabase.co";
+  const SUPABASE_KEY = "sb_publishable__HkrqPL9ZFYBVK51_B8WnQ_WvtLuQuV";
 
-    const SUPABASE_KEY = sb_publishable__HkrqPL9ZFYBVK51_B8WnQ_WvtLuQuV
-      
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+  const form = document.getElementById("signupForm");
 
-    const form = document.getElementById("signupForm");
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-    form.addEventListener("submit", async function(event) {
+    const inputs = form.querySelectorAll("input");
 
-      event.preventDefault();
+    const fullName = inputs[0].value.trim();
+    const email = inputs[1].value.trim();
+    const password = inputs[2].value;
+    const confirmPassword = inputs[3].value;
 
-      const inputs = form.querySelectorAll("input");
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
 
-      const fullName = inputs[0].value.trim();
-      const email = inputs[1].value.trim();
-      const password = inputs[2].value;
-      const confirmPassword = inputs[3].value;
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: {
+          full_name: fullName
+        }
       }
-
-      const { data, error } =
-        await supabaseClient.auth.signUp({
-
-          email: email,
-
-          password: password,
-
-          options: {
-            data: {
-              full_name: fullName
-            }
-          }
-
-        });
-
-      if (error) {
-        alert(error.message);
-        return;
-      }
-
-      alert(
-        "Account created successfully! Please check your email to verify your account."
-      );
-
-      form.reset();
-
     });
 
-  </script>
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Account created successfully! Please check your email to verify your account.");
+
+    form.reset();
+  });
+</script>
 
 </body>
 </html>
